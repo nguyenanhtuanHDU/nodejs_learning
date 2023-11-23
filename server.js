@@ -14,6 +14,11 @@ const apiRoute = require("./src/routes/api");
 
 app.use("/api/v1", apiRoute);
 
+// ghi đè hàm của response
+app.response.sendStatus = function (statusCode, message) {
+  return this.status(statusCode).send(message);
+};
+
 const server = http.createServer(app);
 
 (async () => {
