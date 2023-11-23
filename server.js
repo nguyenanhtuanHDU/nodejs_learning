@@ -19,6 +19,15 @@ app.response.sendStatus = function (statusCode, message) {
   return this.status(statusCode).send(message);
 };
 
+// tạo thuộc tính mới là test có value là tuanna
+Object.defineProperty(app.request, "test", {
+  configurable: true,
+  enumerable: true,
+  get() {
+    return "tuanna";
+  },
+});
+
 const server = http.createServer(app);
 
 (async () => {
